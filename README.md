@@ -80,13 +80,18 @@ I min **CSS-fil** har jeg arbejdet med både layout, farver og animationer for a
 ---
 
 ### Placering
-Først har jeg placeret popup-boksen midt på skærmen ved hjælp af:
-
+Jeg har placeret popup-boksen midt på skærmen ved hjælp af Flexbox i min container.
+Det gør, at popup’en altid står helt centreret både lodret og vandret – uanset skærmstørrelse eller hvor meget man scroller.
 ```css
-position: fixed;
-transform: translateX(-50%);
+#bellis-container {
+  position: fixed;       
+  inset: 0;              
+  display: flex;        
+  align-items: center;   
+  justify-content: center; 
+}
 ```
-Det gør, at popup’en er fastgjort på skærmen og bliver centreret horisontalt.
+På den måde bliver popup’en fastgjort midt på skærmen og forbliver tydelig for brugeren
 
 ### Kørende banner
 
