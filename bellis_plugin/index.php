@@ -3,7 +3,7 @@
  * Plugin Name: bellis plugin
  * Description: Popup med kørende slogan-bånd øverst og mørk baggrund (overlay).
  * Version: 0.5
- * Author: Malene
+ * Author: Malene Jonassen
  * License: GPL2
  */
 
