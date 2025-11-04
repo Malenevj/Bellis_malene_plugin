@@ -148,38 +148,39 @@ Denne effekt giver popup’en en mere behagelig og professionel brugeroplevelse.
 
 ## JavaScript
 
-I min JavaScript-fil har jeg brugt jQuery til at skabe liv og interaktivitet i popup’en.  
+I min JavaScript-fil har jeg brugt Vanilla JavaScript til at skabe liv og interaktivitet i popup’en.   
 Koden gør, at popup’en både åbner og lukker på en glidende og naturlig måde, og at den reagerer på brugerens handlinger.
 
-Jeg starter min kode med at sikre, at hele dokumentet (DOM) er indlæst, før funktionerne kører:
+Jeg starter med at sikre, at hele dokumentet (DOM) er indlæst, før koden kører.  
+Det gør jeg med `DOMContentLoaded`, som sørger for, at JavaScript’et først går i gang, når alt indholdet på siden er klar:
 
 ```js
-// Når hele dokumentet (DOM) er klar, starter jQuery-koden
-jQuery(document).ready(function($) {
+// Når hele dokumentet (DOM) er klar, starter JavaScript-koden
+document.addEventListener('DOMContentLoaded', function() {
 ```
 
 Herinde finder jeg popup-boksen og overlayet og gemmer dem i variabler, så jeg kan styre dem senere:
 ```js
-var $box = $('#bellis-box');       // Selve popup-boksen
-var $overlay = $('#popup-overlay'); // Det mørke overlay bag popup’en
+var box = document.getElementById('bellis-box');       // Selve popup-boksen
+var overlay = document.getElementById('popup-overlay'); // Det mørke overlay bag popup’en
 ```
 ### Animation og timing
 Min animation for, hvordan popup’en skal glide, ligger i min CSS, hvor jeg har defineret klasserne .slide-top og .slide-down.
-JavaScript’en styrer derimod hvornår animationen skal ske.
+JavaScript’en styrer derimod hvornår animationen skal ske..
 
 Jeg skjuler popup’en fra starten ved at tilføje klassen .slide-top:
 ```js
-$box.addClass('slide-top');
+box.classList.add('slide-top');
 ```
 
 Derefter får jeg den til automatisk at glide ned efter ét sekund med setTimeout():
 ```js
 setTimeout(function() {
-    $box.removeClass('slide-top').addClass('slide-down');
-    $overlay.addClass('active'); // Gør overlayet synligt
+    box.classList.remove('slide-top');
+    box.classList.add('slide-down');
+    overlay.classList.add('active'); // Gør overlayet synligt
 }, 1000);
 ```
-
 Hvis jeg kun havde CSS’en, ville popup’en blive vist med det samme, så snart siden blev indlæst uden nogen forsinkelse.
 Ved at bruge JavaScript kan jeg bestemme præcis, hvornår animationen skal starte, så popup’en glider roligt ned efter et kort øjeblik, i stedet for at stå der fra starten.
 
@@ -190,30 +191,33 @@ Derefter har jeg lavet forskellige klikfunktioner, som gør plugin’et interakt
 
 Når man klikker på X’et, lukker popup’en, og overlayet forsvinder:
 ```js
-$('#bellis-close').on('click', function() {
-    $box.removeClass('slide-down').addClass('slide-top');
-    $overlay.removeClass('active');
+var closeBtn = document.getElementById('bellis-close');
+closeBtn.addEventListener('click', function() {
+    box.classList.remove('slide-down');
+    box.classList.add('slide-top');
+    overlay.classList.remove('active');
 });
 ```
 
 Når man klikker på “Bliv en del af fællesskabet”, bliver man sendt videre til siden Bag Bellis:
 ```js
-$('#bellis-button').on('click', function(e) {
+var ctaBtn = document.getElementById('bellis-button');
+ctaBtn.addEventListener('click', function(e) {
     e.preventDefault(); // Forhindrer evt. standardknapadfærd
-    window.location.href = 'https://storyscaping.shstudio.dk/elementor-615/home/';
+    window.location.href = 'https://storyscaping.shstudio.dk/elementor-615/home/
 });
 ```
 
 Hvis man klikker udenfor popup’en, altså på overlayet, lukker den også automatisk:
 ```js
-$overlay.on('click', function() {
-    $box.removeClass('slide-down').addClass('slide-top');
-    $overlay.removeClass('active');
+overlay.addEventListener('click', function() {
+    box.classList.remove('slide-down');
+    box.classList.add('slide-top');
+    overlay.classList.remove('active');
 });
 ```
 Jeg har valgt at lave det sådan, fordi det er den måde, brugerne typisk forventer, at en popup fungerer på.
 Det giver en mere naturlig og brugervenlig oplevelse, hvor man nemt kan lukke vinduet igen eller vælge at gå videre.
-
 
 ##  Shortcode
 
