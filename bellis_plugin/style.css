@@ -1,15 +1,17 @@
 /* ----------------------------------------------------
    CONTAINER (placerer og centrerer popup-boksen)
 ---------------------------------------------------- */
+/* FULD-SKÆRM CONTAINER + CENTRERING */
 #bellis-container {
-  position: fixed;           /* Får boksen til at blive på samme sted, selv når man scroller */
-  top: 10%;                  /* Afstand fra toppen af skærmen */
-  left: 50%;                 /* får boksen til at være i midten af skræmen */
-  transform: translateX(-50%); /* Centrerer horisontalt */
-  z-index: 9999;             /* Sørger for at den ligger ovenpå alt andet */
-  width: 100%;               
-  max-width: 700px;          /* ... stopper ved 700px så den ikke bliver for bred */
-  pointer-events: none;      /* Forhindrer at man klikker på elementet, når popup’en er skjult */
+  position: fixed;          /* Sørger for, at containeren bliver på samme sted på skærmen, selv når man scroller */
+  inset: 0;               
+  display: flex;            /* Aktiverer flexbox, så man nemt kan centrere indholdet */
+  align-items: center;      /* Placerer popup’en midt på skærmen lodret */
+  justify-content: center;  /* Placerer popup’en midt på skærmen vandret */
+  z-index: 9999;            
+  pointer-events: none;     /* Gør at man ikke kan klikke på selve containeren, kun på elementer inde i den (min popup) */
+}
+
 }
 
 /* ----------------------------------------------------
