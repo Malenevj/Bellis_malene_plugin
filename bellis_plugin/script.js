@@ -1,4 +1,4 @@
-/ Når hele dokumentet (DOM) er klar, starter JavaScript-koden
+// Når hele dokumentet (DOM) er klar, starter JavaScript-koden
 document.addEventListener('DOMContentLoaded', function() {
 
     // Finder popup-boksen og overlayet og gemmer dem i variabler
