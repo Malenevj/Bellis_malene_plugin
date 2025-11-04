@@ -49,16 +49,19 @@ De sørger for, at mit plugin automatisk får hentet både CSS og JavaScript, n�
 Jeg har placeret dem i starten af koden, fordi de skal indlæses før popup’en vises.
 Hvis jeg lagde dem i bunden, ville WordPress ikke kende filerne, når popup’en skal vises, og derfor kunne designet eller funktionerne måske ikke virke korrekt.
 
-Herefter har jeg bygget hele HTML-strukturen til popup’en.
-Den indeholder:
+### Funktionen bellis_popup_box()
+Herefter har jeg oprettet selve funktionen **bellis_popup_box()**, som står for at bygge hele HTML-strukturen til min popup.
+Det er her, alt indholdet bliver samlet og sat op i den rækkefølge, det skal vises på siden.
 
-- Et mørkt overlay (#popup-overlay)
+Funktionen indeholder:
+- Et mørkt overlay (#popup-overlay), som dæmper baggrunden.
 
-- En centreret container (#bellis-container)
+- En centreret container (#bellis-container) ,der holder popup’en på plads midt på skærmen.
 
-- Selve popup-boksen (.bellis-box)
+- Selve popup-boksen (.bellis-box), hvor alt indholdet ligger.
 
-Inde i boksen er der et kørende slogan-bånd, et billede, lidt tekst og en CTA-knap med teksten “Bliv en del af fællesskabet”.
+Inde i boksen har jeg tilføjet et kørende slogan-bånd, et billede, lidt tekst og en CTA-knap med teksten “Bliv en del af fællesskabet”.
+Det hele er bygget i HTML inde i funktionen, så WordPress kan indsætte det præcis, hvor jeg ønsker det.
 
 I min PHP-fil har jeg også tilføjet mange kommentarer, så jeg hele tiden kan huske, hvad hver del gør.
 Det gør det nemt for mig at arbejde videre senere, uden at glemme, hvordan koden hænger sammen.
@@ -240,7 +243,7 @@ Det betyder, at når jeg skriver [bellis_popup] i WordPress,
 så kalder den funktionen bellis_popup_box(), som indeholder hele HTML-strukturen til popup’en.
 ```
 
-På den måde bliver alt det, jeg har bygget — både HTML, CSS og JavaScript —
+På den måde bliver alt det, jeg har bygget både HTML, CSS og JavaScript
 automatisk hentet og vist det rigtige sted på hjemmesiden.
 
 
