@@ -12,8 +12,6 @@
   pointer-events: none;     /* Gør at man ikke kan klikke på selve containeren, kun på elementer inde i den (min popup) */
 }
 
-}
-
 /* ----------------------------------------------------
    ØVERSTE KØRENDE BANNER (marquee-tekst)
 ---------------------------------------------------- */
