@@ -14,7 +14,7 @@ Farverne, jeg har brugt, er rød og beige, da det er de gennemgående farver på
 
 Formålet med plugin’et er at skabe en visuel og interaktiv introduktion til Bellis-universet, hvor popup’en byder brugeren velkommen og linker videre til vores underside *“Bag Bellis”*.
 
-# Filstruktur
+## Filstruktur
 
 Mit plugin ligger i mappen:  
 `/wp-content/plugins/bellis_plugin/`
@@ -37,9 +37,8 @@ I starten af min PHP-fil har jeg tilføjet denne linje:
 
 ```php
 if (!defined('ABSPATH')) exit;
+Jeg har brugt den for at sørge for, at mit plugin kun kører, når WordPress er aktivt, og ikke kan misbruges ved at blive åbnet direkte.
 ```
-Den linje bruger jeg til at lave et lille sikkerhedstjek.
-Den sørger for, at mit plugin kun kører, når WordPress er aktivt, og ikke hvis nogen prøver at åbne PHP-filen direkte i en browser..
 
 Efter sikkerhedstjekket har jeg tilføjet:
 ```php
@@ -51,21 +50,69 @@ Jeg har placeret dem i starten af koden, fordi de skal indlæses før popup’en
 Hvis jeg lagde dem i bunden, ville WordPress ikke kende filerne, når popup’en skal vises, og derfor kunne designet eller funktionerne måske ikke virke korrekt.
 
 ### Funktionen bellis_popup_box()
-Herefter har jeg oprettet selve funktionen **bellis_popup_box()**, som står for at bygge hele HTML-strukturen til min popup.
-Det er her, alt indholdet bliver samlet og sat op i den rækkefølge, det skal vises på siden.
+Funktionen bellis_popup_box() står for at bygge hele HTML-strukturen til min popup.
+Her bliver alt indholdet samlet og sat op i den rækkefølge, det skal vises på siden.
+Funktionen gør, at popup’en automatisk kan indsættes via shortcoden [bellis_popup] i WordPress.
 
-Funktionen indeholder:
-- Et mørkt overlay (#popup-overlay), som dæmper baggrunden.
 
-- En centreret container (#bellis-container) ,der holder popup’en på plads midt på skærmen.
+Her begynder opbygningen af hele popup’en, og alt indhold gemmes i variablen $content.
 
-- Selve popup-boksen (.bellis-box), hvor alt indholdet ligger.
+```php
+function bellis_popup_box() {
+    // Starter med at opbygge popup-indholdet
+    $content = '';
+  ```
 
-Inde i boksen har jeg tilføjet et kørende slogan-bånd, et billede, lidt tekst og en CTA-knap med teksten “Bliv en del af fællesskabet”.
-Det hele er bygget i HTML inde i funktionen, så WordPress kan indsætte det præcis, hvor jeg ønsker det.
+Derefter starter jeg med at lave en <div> til det mørke baggrundslag, som dæmper resten af siden, når popup’en vises.
+```php
+    // Mørkt overlay der dækker baggrunden
+    $content .= '<div id="popup-overlay"></div>';
+```
+Derefter har jeg en container, som  sørger for, at popup’en bliver placeret midt på skærmen.
+```php
+ // Container der centrerer popup’en
+    $content .= '<div id="bellis-container">';
+```
+Så har vi selve popup-boksen, som indeholder 
+```php
+    // Selve popup-boksen
+    $content .= '<div class="bellis-box slide-top">';
+
+    // Lukke-knappen (X)
+    $content .= '<div class="bellis-close-button">&#10006;</div>';
+
+    // Overskrift
+    $content .= '<h2>FÆLLESSKABET STARTER HER</h2>';
+
+    // Billede
+    $content .= '<img src="' . plugin_dir_url(__FILE__) . 'img/bellis.png" alt="Bellis illustration">';
+
+    // Tekst
+    $content .= '<p>Hos Bellis er du ikke bare gæst, du er en del af noget større.<br>
+                 Vi connect’er, create’er og celebrate’er livet – præcis som det er.</p>';
+
+    // CTA-knap
+    $content .= '<div class="button-holder">';
+    $content .= '<button id="bellis-button">Bliv en del af fællesskabet</button>';
+    $content .= '</div>';
+
+    // Luk popup-boks og container
+    $content .= '</div>'; // .bellis-box
+    $content .= '</div>'; // #bellis-container
+  ```
+ 
+ Til sidst i min html kode står der: 
+```php
+    return $content;
+```
+Det er fordi jeg tilsidst sender alt HTML-indholdet tilbage til WordPress, så det kan vises dér, hvor shortcoden [bellis_popup] bliver brugt.
+
+
+Grunden til, at jeg bruger ( .= ) efter hvert sted hvor der står content, er fordi at det betyder at jeg tilføjernyt indhold til $content i stedet for at overskrive det, jeg allerede har skrevet.
 
 I min PHP-fil har jeg også tilføjet mange kommentarer, så jeg hele tiden kan huske, hvad hver del gør.
 Det gør det nemt for mig at arbejde videre senere, uden at glemme, hvordan koden hænger sammen.
+
 
 Jeg har desuden tilføjet en shortcode i WordPress, så man kan vise popup’en hvor som helst på siden ved at indsætte:
 [bellis_popup]
@@ -75,6 +122,9 @@ Det gør plugin’et fleksibelt og nemt at genbruge.
 
 
 ##  CSS 
+
+I min **CSS-fil** har jeg arbejdet med både layout, farver og animationer for at få popup’en til at se indbydende og levende ud.
+
 ---
 
 ### Placering
