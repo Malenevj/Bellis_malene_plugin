@@ -300,6 +300,20 @@ På den måde bliver alt det, jeg har bygget både HTML, CSS og JavaScript
 automatisk hentet og vist det rigtige sted på hjemmesiden.
 
 
-##  Min popup
+##  Skitser 
+For at få et bedre overblik over, hvordan jeg ville opbygge mit plugin, startede jeg med at lave en wireframe i Figma. Her fokuserede jeg på struktur, layout og de vigtigste elementer som overskrift, tekst, billede og knap – uden at tænke på farver eller detaljer.
 
+Herefter begyndte jeg at arbejde videre med designet og eksperimenterede med forskellige tekstudtryk for at finde den rette tone og stemning. Jeg tegnede mine egne illustrationer i Illustrator for at skabe et personligt og genkendeligt udtryk, der passede til Bellis’ visuelle identitet.
+
+Undervejs justerede jeg layout, farver og typografi for at skabe bedre balance og hierarki i designet. Processen endte med et endeligt design, der har en tydelig rød tråd til vores hjemmeside, da jeg har inkorporeret flere af de samme elementer bl.a. banneret i toppen med CONNECT • CREATE • CELEBRATE
+
+![Skitser](skitser.png)
+
+
+
+##  Validering af css
+For at sikre kvaliteten af min kode har jeg valideret min CSS ved hjælp af W3C CSS Validatoren (Jigsaw). Resultatet viste, at der ikke var nogen fejl i min CSS.
+![css_validering](validering.png)
+
+##  Min popup
 ![Mit_billede_til_popup](cover_billede.png)
