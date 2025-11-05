@@ -75,9 +75,6 @@ Det gør plugin’et fleksibelt og nemt at genbruge.
 
 
 ##  CSS 
-
-I min **CSS-fil** har jeg arbejdet med både layout, farver og animationer for at få popup’en til at se indbydende og levende ud.
-
 ---
 
 ### Placering
