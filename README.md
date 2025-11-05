@@ -38,7 +38,8 @@ I starten af min PHP-fil har jeg tilføjet denne linje:
 ```php
 if (!defined('ABSPATH')) exit;
 ```
-Jeg har brugt den for at sørge for, at mit plugin kun kører, når WordPress er aktivt, og ikke kan misbruges ved at blive åbnet direkte.
+Den linje bruger jeg til at lave et lille sikkerhedstjek.
+Den sørger for, at mit plugin kun kører, når WordPress er aktivt, og ikke hvis nogen prøver at åbne PHP-filen direkte i en browser..
 
 Efter sikkerhedstjekket har jeg tilføjet:
 ```php
