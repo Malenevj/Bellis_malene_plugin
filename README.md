@@ -299,6 +299,7 @@ så kalder den funktionen bellis_popup_box(), som indeholder hele HTML-strukture
 På den måde bliver alt det, jeg har bygget både HTML, CSS og JavaScript
 automatisk hentet og vist det rigtige sted på hjemmesiden.
 
+![shortcode](shortcode.png)
 
 ##  Skitser 
 For at få et bedre overblik over, hvordan jeg ville opbygge mit plugin, startede jeg med at lave en wireframe i Figma. Her fokuserede jeg på struktur, layout og de vigtigste elementer som overskrift, tekst, billede og knap – uden at tænke på farver eller detaljer.
